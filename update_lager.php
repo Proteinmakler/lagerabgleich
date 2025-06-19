@@ -9,6 +9,13 @@ $user = getenv("BILLBEE_USER");
 $pass = getenv("BILLBEE_PASS");
 $csvUrl = getenv("CSV_URL");
 
+// Debug-Ausgabe
+echo "🧪 CSV_URL geladen als: '" . $csvUrl . "'\n";
+if (!$csvUrl) {
+    echo "❌ CSV_URL ist leer oder wurde nicht geladen!\n";
+    exit(1);
+}
+
 $baseUrl = "https://app.billbee.io/api/v1/products";
 $updateStockUrl = "https://app.billbee.io/api/v1/products/updatestock";
 $standardLagerId = 400000000027869;
