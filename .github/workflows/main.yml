@@ -1,0 +1,19 @@
+name: Lagerbestand automatisch abgleichen
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'  # alle 30 Minuten (UTC)
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v3
+
+      - name: PHP installieren
+        run: sudo apt install php -y
+
+      - name: Skript ausführen
+        run: php update_lager.php
